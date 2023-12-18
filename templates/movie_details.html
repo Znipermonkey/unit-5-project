@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ movie.title }} - Details{% endblock %}
+
+{% block body %}
+
+<h1>{{ movie.title }}</h1>
+{% if session.get('user_email') %}
+<h2>Ratting</h2>
+<form action="/movies/{{ movie.movie_id }}/ratings" method="POST">
+  <input type ="radio" id="1" name="rating" value="1">
+  <label fro="1">1</label>
+  <input type ="radio" id="2" name="rating" value="2">
+  <label fro="2">2</label>
+  <input type ="radio" id="3" name="rating" value="3">
+  <label fro="3">3</label>
+  <input type ="radio" id="4" name="rating" value="4">
+  <label fro="4">4</label>
+  <input type ="radio" id="5" name="rating" value="5">
+  <label fro="5">5</label>
+</form>
+<p>
+  {{ movie.overview }}
+</p>
+
+<img src="{{ movie.poster_path }}">
+{% endblock %}
